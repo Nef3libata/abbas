@@ -1,4 +1,13 @@
 // --- Library ---
+const render = (el, container) => {
+	const domEl = document.createElement(el.tag);
+	const elProps = el.props ? Object.keys(el.props) : [];
+
+	elProps.forEach((prop) => {
+		domEl[prop] = el.props[prop];
+		console.log(el.props[prop]);
+	});
+};
 const Abbas = {
 	createElement: (tag, props, ...children) => {
 		if (typeof tag === "function") {
@@ -9,7 +18,6 @@ const Abbas = {
 			props,
 			children,
 		};
-		console.log(el);
 		return el;
 	},
 };
@@ -26,4 +34,4 @@ const App = () => {
 	);
 };
 
-console.log(<App />);
+render(<App />, document.getElementById("myapp"));
